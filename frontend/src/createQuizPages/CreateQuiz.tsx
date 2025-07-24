@@ -142,26 +142,33 @@ export default function CreateQuiz() {
   }
 
   function saveQuizToDb() {
-    
-    setQuiz({ ...quiz, questions: questionsData });
+    const quizToSend = {
+      quizName: quiz.quizName,
+      questions: questionsData,
+    };
     console.log(quiz);
 
     axios
-      .post(`${urlToBackend}/quiz/createQuiz`, quiz, {
-      })
+      .post(`${urlToBackend}/quiz/createQuiz`, quizToSend, {})
       .then((res) => {
         console.log(res.data);
       })
       .catch((error) => {
         console.error(error);
       });
+
+    setQuestionsData([]);
+
+    setQuiz({ quizName: "", questions: questionsData });
   }
+
+  console.log(questionsData);
 
   return (
     <div>
       <h1>Create your quiz</h1>
 
-      <input onChange={(e) => setQuiz({ ...quiz, quizName: e.target.value })} placeholder="Title"></input>
+      <input value={quiz.quizName} onChange={(e) => setQuiz({ ...quiz, quizName: e.target.value })} placeholder="Title"></input>
 
       <h1>Number of questions {questionsData.length}</h1>
 

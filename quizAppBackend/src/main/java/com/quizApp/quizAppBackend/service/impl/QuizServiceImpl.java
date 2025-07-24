@@ -50,8 +50,6 @@ public class QuizServiceImpl implements QuizService {
 
         quiz.setQuizName(quizDTO.quizName);
 
-        quiz = quizRepository.save(quiz);
-
         List<Question> questionsList = new ArrayList<>();
 
         for (QuestionDTO questionDTO: quizDTO.getQuestions()) {
@@ -76,8 +74,10 @@ public class QuizServiceImpl implements QuizService {
 
             question.setAnswers(answerList);
 
-            quiz.addQuestions(question);
+            questionsList.add(question);
         }
+
+        quiz.setQuestions(questionsList);
 
         quizRepository.save(quiz);
     }

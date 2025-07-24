@@ -16,43 +16,35 @@ export function PlayQuizMain() {
     });
   }, []);
 
-  function nextAnswer(choosedAnswer: string) {
-    
+  function nextAnswer(choosedAnswer: string, idxAnswer: number) {
+    let isCorrect = checkIfAnswerIsCorrect(idxAnswer);
+
+    console.log(isCorrect);
+
+    // IF progress is less than the answers list length continue incrementing the progress, NOTE: this is for avoid crashing the page
+    if (progress + 1 < quiz?.questions[progress].answers.length) {
+      setProgress(progress + 1);
+    }
+  }
+
+  function checkIfAnswerIsCorrect(idxAnswer: number) {
+    if (quiz?.questions[progress].answers[idxAnswer].isCorrect) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   return (
     <div>
       <h1>Welcome to {quiz?.name}</h1>
 
-      {/* {quiz?.questions.map((question, idx) => {
-        return (
-          <div key={crypto.randomUUID()}>
-            <h3>Question {idx + 1}.</h3>
-
-            <h2>{question.name}</h2>
-
-            <h2>{question.contentQuestion}</h2>
-
-            {{question.answers.map(answer => {
-              return(
-                <div key={crypto.randomUUID()}>
-                  <button>{answer.content}</button>
-                </div>
-              )
-            })}}
-
-              
-
-          </div>
-        );
-      })} */}
-
       <h2>{quiz?.questions[progress].contentQuestion}</h2>
 
-      {quiz?.questions[progress].answers.map((answer) => {
+      {quiz?.questions[progress].answers.map((answer, idxAnswer) => {
         return (
           <div>
-            <button onClick={() => nextAnswer(answer.content)}>{answer.content}</button>
+            <button onClick={() => nextAnswer(answer.content, idxAnswer)}>{answer.content}</button>
           </div>
         );
       })}

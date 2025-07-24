@@ -17,10 +17,6 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions = new ArrayList<>();
 
-    public void addQuestions(Question question) {
-        this.questions.add(question);
-    }
-
     public Long getId() {
         return id;
     }
