@@ -1,0 +1,20 @@
+# Node (frontend)
+frontend/node_modules/
+frontend/.env
+frontend/dist/
+
+# Java (backend)
+QuizAppBackend/target/
+QuizAppBackend/*.log
+QuizAppBackend/.idea/
+QuizAppBackend/.classpath
+QuizAppBackend/.project
+QuizAppBackend/.settings/
+
+# General
+.DS_Store
+*.log
+*.tmp
+*.swp
+.vscode/
+.idea/
