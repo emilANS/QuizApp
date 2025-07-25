@@ -16,6 +16,10 @@ public class Answer {
 
     private Integer score;
 
+    private String content;
+
+    private boolean isCorrect;
+
     public Long getId() {
         return id;
     }
@@ -55,8 +59,4 @@ public class Answer {
     public void setScore(Integer score) {
         this.score = score;
     }
-
-    private String content;
-
-    private boolean isCorrect;
 }

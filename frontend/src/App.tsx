@@ -8,6 +8,7 @@ import ProtectedRoute from "./protectedRoutes/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowseQuiz } from "./browseQuiz/BrowseQuiz";
 import { PlayQuizMain } from "./playQuiz/PlayQuizMain";
+import { QuizMultiplayerChoose } from "./multiplayerMode/QuizMultiplayerChoose";
 
 function App() {
   return (
@@ -39,6 +40,17 @@ function App() {
             element={
               <AuthProvider>
                 <LoginPage />
+              </AuthProvider>
+            }
+          ></Route>
+
+          <Route
+            path="/multiplayer-choose"
+            element={
+              <AuthProvider>
+                <ProtectedRoute>
+                  <QuizMultiplayerChoose />
+                </ProtectedRoute>
               </AuthProvider>
             }
           ></Route>

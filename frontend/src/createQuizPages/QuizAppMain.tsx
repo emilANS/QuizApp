@@ -16,7 +16,11 @@ export default function QuizAppMain() {
   }
 
   function redirectToBrowseQuizzes() {
-    window.location.pathname = "/browse-quizzes"
+    window.location.pathname = "/browse-quizzes";
+  }
+
+  function redirectToMultiplayer() {
+    window.location.pathname = "/multiplayer-choose";
   }
 
   return (
@@ -36,6 +40,10 @@ export default function QuizAppMain() {
       <br></br>
 
       <button onClick={redirectToBrowseQuizzes}>Browse Quizzes</button>
+
+      <br></br>
+
+      <button onClick={redirectToMultiplayer}>Play multiplayer!</button>
 
       {isAuthenticated && <button>Log out</button>}
     </div>
